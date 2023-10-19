@@ -13,6 +13,12 @@ int main(int argc, char *argv[])
     // Change a value example
     set_list_node_data(&list, 1, 1111);
     print_list_values(&list);
+    // Pop Node example
+    struct Node *removed = pop_node(&list);
+    print_list_values(&list);
+    removed = pop_node(&list);
+    print_list_values(&list);
+    free(removed);
 }
 
 struct Node *get_list_node(struct LinkedList *list, int index)
@@ -84,11 +90,16 @@ void set_list_node_data(struct LinkedList *list, int index, int new_data)
 void print_list_values(struct LinkedList *list)
 {
     int len = get_list_length(list);
+    if (len == 0)
+    {
+        printf("NULL\n");
+        return;
+    }
     for (int i = 0; i < len; i++)
     {
         if (get_list_node(list, i) == NULL)
         {
-            printf("NULL \n");
+            printf("NULL\n");
         }
         else
         {
@@ -96,4 +107,37 @@ void print_list_values(struct LinkedList *list)
         }
     }
     printf("\n");
+}
+
+struct Node *pop_node(struct LinkedList *list)
+{
+    if (list->first == NULL)
+    {
+        // No Nodes
+        return NULL;
+    }
+    struct Node *last;
+    if (list->first->next == NULL)
+    {
+        // There's only one Node
+        last = list->first;
+        list->first = NULL;
+        return last;
+    }
+    struct Node *current = list->first;
+    while (current->next != NULL)
+    {
+        // If Node has Node, but Node 2's next Node is null, we are at second to last
+        // We need to remove last and set second to last to link to null
+        // Only thing is, it's then up to the user to free the memory.
+        if (current->next->next == NULL)
+        {
+            last = current->next;
+            current->next = NULL;
+            return last;
+        }
+        current = current->next;
+    }
+    // Failsafe
+    return NULL;
 }

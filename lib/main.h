@@ -13,5 +13,6 @@ struct LinkedList
 struct Node *get_list_node(struct LinkedList *, int);
 void set_list_node_data(struct LinkedList *, int, int);
 void append_node(struct LinkedList *, int);
+struct Node *pop_node(struct LinkedList *);
 int get_list_length(struct LinkedList *);
 void print_list_values(struct LinkedList *);
