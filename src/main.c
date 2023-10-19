@@ -36,18 +36,18 @@ struct Node *get_list_node(struct LinkedList *list, int index)
 // Args: (LinkedList*) list to append to, (int) data to append.
 void append_node(struct LinkedList *list, int data)
 {
-    int len = get_list_length(list);
     struct Node *new = malloc(sizeof(struct Node));
     new->data = data;
     new->next = NULL;
-    if (len == 0)
+    struct Node *current = list->first;
+
+    if (current == NULL)
     {
         list->first = new;
         return;
     }
 
-    struct Node *current = list->first;
-    for (int i = 1; i < len; i++)
+    while (current->next != NULL)
     {
         current = current->next;
     }
