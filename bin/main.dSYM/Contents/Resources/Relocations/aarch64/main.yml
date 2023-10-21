@@ -2,12 +2,13 @@
 triple:          'arm64-apple-darwin'
 binary-path:     'bin/main'
 relocations:
-  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x100003A64, symSize: 0xB4 }
-  - { offsetInCU: 0x41, offset: 0x41, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x100003A64, symSize: 0xB4 }
-  - { offsetInCU: 0x93, offset: 0x93, size: 0x8, addend: 0x0, symName: _append_node, symObjAddr: 0xB4, symBinAddr: 0x100003B18, symSize: 0xAC }
-  - { offsetInCU: 0xE1, offset: 0xE1, size: 0x8, addend: 0x0, symName: _print_list_values, symObjAddr: 0x160, symBinAddr: 0x100003BC4, symSize: 0xE8 }
-  - { offsetInCU: 0x12F, offset: 0x12F, size: 0x8, addend: 0x0, symName: _set_list_node_data, symObjAddr: 0x248, symBinAddr: 0x100003CAC, symSize: 0x78 }
-  - { offsetInCU: 0x17D, offset: 0x17D, size: 0x8, addend: 0x0, symName: _pop_node, symObjAddr: 0x2C0, symBinAddr: 0x100003D24, symSize: 0xEC }
-  - { offsetInCU: 0x1C1, offset: 0x1C1, size: 0x8, addend: 0x0, symName: _get_list_node, symObjAddr: 0x3AC, symBinAddr: 0x100003E10, symSize: 0xB0 }
-  - { offsetInCU: 0x221, offset: 0x221, size: 0x8, addend: 0x0, symName: _get_list_length, symObjAddr: 0x45C, symBinAddr: 0x100003EC0, symSize: 0x8C }
+  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x1000038F8, symSize: 0xE8 }
+  - { offsetInCU: 0x41, offset: 0x41, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x1000038F8, symSize: 0xE8 }
+  - { offsetInCU: 0x93, offset: 0x93, size: 0x8, addend: 0x0, symName: _append_node, symObjAddr: 0xE8, symBinAddr: 0x1000039E0, symSize: 0xAC }
+  - { offsetInCU: 0xE1, offset: 0xE1, size: 0x8, addend: 0x0, symName: _print_list_values, symObjAddr: 0x194, symBinAddr: 0x100003A8C, symSize: 0xE8 }
+  - { offsetInCU: 0x12F, offset: 0x12F, size: 0x8, addend: 0x0, symName: _set_list_node_data, symObjAddr: 0x27C, symBinAddr: 0x100003B74, symSize: 0x78 }
+  - { offsetInCU: 0x17D, offset: 0x17D, size: 0x8, addend: 0x0, symName: _insert_node, symObjAddr: 0x2F4, symBinAddr: 0x100003BEC, symSize: 0x138 }
+  - { offsetInCU: 0x207, offset: 0x207, size: 0x8, addend: 0x0, symName: _get_list_node, symObjAddr: 0x42C, symBinAddr: 0x100003D24, symSize: 0xB0 }
+  - { offsetInCU: 0x267, offset: 0x267, size: 0x8, addend: 0x0, symName: _get_list_length, symObjAddr: 0x4DC, symBinAddr: 0x100003DD4, symSize: 0x8C }
+  - { offsetInCU: 0x2AB, offset: 0x2AB, size: 0x8, addend: 0x0, symName: _pop_node, symObjAddr: 0x568, symBinAddr: 0x100003E60, symSize: 0xEC }
 ...

@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdbool.h>
 struct Node
 {
     int data;
@@ -16,3 +17,4 @@ void append_node(struct LinkedList *, int);
 struct Node *pop_node(struct LinkedList *);
 int get_list_length(struct LinkedList *);
 void print_list_values(struct LinkedList *);
+bool insert_node(struct LinkedList *, int, int);

@@ -13,12 +13,12 @@ int main(int argc, char *argv[])
     // Change a value example
     set_list_node_data(&list, 1, 1111);
     print_list_values(&list);
-    // Pop Node example
-    struct Node *removed = pop_node(&list);
+    // Insert example
+    insert_node(&list, 1, 4444);
     print_list_values(&list);
-    removed = pop_node(&list);
-    print_list_values(&list);
-    free(removed);
+    // Returns false if index is greater than list size
+    bool status = insert_node(&list, 9, 4244);
+    printf("%s\n", status ? "True" : "False");
 }
 
 struct Node *get_list_node(struct LinkedList *list, int index)
@@ -140,4 +140,33 @@ struct Node *pop_node(struct LinkedList *list)
     }
     // Failsafe
     return NULL;
+}
+
+bool insert_node(struct LinkedList *list, int index, int data)
+{
+    // Get node at index
+    //      Could use get_node, but we'd need two loops - for index node and index - 1 node
+    //      Instead, we'll write our own loop so we can get node at index and index - 1 simultaneously
+    struct Node *index_node = list->first;
+    struct Node *prev_node = list->first;
+    if (index_node == NULL && index != 0)
+    {
+        return false;
+    }
+    for (int i = 0; i < index; i++)
+    {
+        if (index_node->next == NULL)
+        {
+            return false;
+        }
+        // Get node at index - 1
+        prev_node = index_node;
+        index_node = index_node->next;
+    }
+
+    struct Node *new_node = malloc(sizeof(struct Node));
+    new_node->data = data;
+    new_node->next = index_node;
+    prev_node->next = new_node;
+    return true;
 }
