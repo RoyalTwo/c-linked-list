@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
     set_list_node_data(&list, 1, 1111);
     print_list_values(&list);
     // Insert example
-    insert_node(&list, 1, 4444);
+    insert_node(&list, 0, 4444);
     print_list_values(&list);
     // Returns false if index is greater than list size
     bool status = insert_node(&list, 9, 4244);
@@ -163,10 +163,14 @@ bool insert_node(struct LinkedList *list, int index, int data)
         prev_node = index_node;
         index_node = index_node->next;
     }
-
     struct Node *new_node = malloc(sizeof(struct Node));
     new_node->data = data;
     new_node->next = index_node;
+    if (index == 0)
+    {
+        list->first = new_node;
+        return true;
+    }
     prev_node->next = new_node;
     return true;
 }
