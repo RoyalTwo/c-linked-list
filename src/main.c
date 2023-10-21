@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
     append_node(&list, 5678);
     append_node(&list, 8765);
     print_list_values(&list);
-    // Change a value example
+    // Set value example
     set_list_node_data(&list, 1, 1111);
     print_list_values(&list);
     // Insert example
@@ -39,7 +39,6 @@ struct Node *get_list_node(struct LinkedList *list, int index)
     return current;
 }
 
-// Args: (LinkedList*) list to append to, (int) data to append.
 void append_node(struct LinkedList *list, int data)
 {
     struct Node *new = malloc(sizeof(struct Node));
