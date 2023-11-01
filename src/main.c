@@ -3,21 +3,21 @@
 
 int main(int argc, char *argv[])
 {
-    struct LinkedList list = {NULL};
+    struct LinkedList *list = create_linked_list();
     // Appending example
-    append_node(&list, 1234);
-    append_node(&list, 4321);
-    append_node(&list, 5678);
-    append_node(&list, 8765);
-    print_list_values(&list);
+    append_node(list, 1234);
+    append_node(list, 4321);
+    append_node(list, 5678);
+    append_node(list, 8765);
+    print_list_values(list);
     // Set value example
-    set_list_node_data(&list, 1, 1111);
-    print_list_values(&list);
+    set_list_node_data(list, 1, 1111);
+    print_list_values(list);
     // Insert example
-    insert_node(&list, 0, 4444);
-    print_list_values(&list);
+    insert_node(list, 0, 4444);
+    print_list_values(list);
     // Returns false if index is greater than list size
-    bool status = insert_node(&list, 9, 4244);
+    bool status = insert_node(list, 9, 4244);
     printf("%s\n", status ? "True" : "False");
 }
 
@@ -172,4 +172,11 @@ bool insert_node(struct LinkedList *list, int index, int data)
     }
     prev_node->next = new_node;
     return true;
+}
+
+struct LinkedList *create_linked_list()
+{
+    struct LinkedList *new_list = malloc(sizeof(struct LinkedList));
+    new_list->first = NULL;
+    return new_list;
 }

@@ -11,6 +11,7 @@ struct LinkedList
     struct Node *first;
 };
 
+struct LinkedList *create_linked_list();
 struct Node *get_list_node(struct LinkedList *, int);
 void set_list_node_data(struct LinkedList *, int, int);
 void append_node(struct LinkedList *, int);
