@@ -16,15 +16,7 @@ int main(int argc, char *argv[])
     // Insert example
     insert_node(list, 0, 4444);
     print_list_values(list);
-    // Returns false if index is greater than list size
-    bool status = insert_node(list, 9, 4244);
-    printf("%s\n", status ? "True" : "False");
-    // Remove example
-    remove_node(list, 0);
-    print_list_values(list);
-    // Returns removed node
-    struct Node *removed_node = remove_node(list, 0);
-    printf("R: %d\n", removed_node->data);
+    // Traverse and exec arbitrary code
     traverse_and_execute_list(list, &test_func);
 }
 
@@ -228,7 +220,7 @@ void traverse_and_execute_list(struct LinkedList *list, void (*callback)(struct 
     }
 
     int index = 0;
-    while (current->next != NULL)
+    while (current != NULL)
     {
         (*callback)(current, index);
         current = current->next;
@@ -238,5 +230,6 @@ void traverse_and_execute_list(struct LinkedList *list, void (*callback)(struct 
 
 void test_func(struct Node *node, int index)
 {
-    printf("EXECUTING");
+    node->data = 10;
+    printf("INDEX: %d DATA: %d\n", index, node->data);
 }
