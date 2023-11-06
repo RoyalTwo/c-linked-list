@@ -19,3 +19,6 @@ struct Node *pop_node(struct LinkedList *);
 int get_list_length(struct LinkedList *);
 void print_list_values(struct LinkedList *);
 bool insert_node(struct LinkedList *, int, int);
+struct Node *remove_node(struct LinkedList *, int);
+void traverse_and_execute_list(struct LinkedList *, void (*)(struct Node *, int));
+void test_func(struct Node *, int);

@@ -19,6 +19,13 @@ int main(int argc, char *argv[])
     // Returns false if index is greater than list size
     bool status = insert_node(list, 9, 4244);
     printf("%s\n", status ? "True" : "False");
+    // Remove example
+    remove_node(list, 0);
+    print_list_values(list);
+    // Returns removed node
+    struct Node *removed_node = remove_node(list, 0);
+    printf("R: %d\n", removed_node->data);
+    traverse_and_execute_list(list, &test_func);
 }
 
 struct Node *get_list_node(struct LinkedList *list, int index)
@@ -179,4 +186,57 @@ struct LinkedList *create_linked_list()
     struct LinkedList *new_list = malloc(sizeof(struct LinkedList));
     new_list->first = NULL;
     return new_list;
+}
+
+struct Node *remove_node(struct LinkedList *list, int index)
+{
+    // Traverse list
+    struct Node *index_node = list->first;
+    struct Node *prev_node = list->first;
+    struct Node *next_node = NULL;
+    if (index_node == NULL)
+    {
+        return NULL;
+    }
+    if (index == 0)
+    {
+        struct Node *next_node = index_node->next;
+        list->first = next_node;
+        return index_node;
+    }
+    for (int i = 0; i < index; i++)
+    {
+        if (index_node->next == NULL)
+        {
+            return NULL;
+        }
+        prev_node = index_node;
+        index_node = index_node->next;
+    }
+    next_node = index_node->next;
+    prev_node->next = next_node;
+    return index_node;
+}
+
+void traverse_and_execute_list(struct LinkedList *list, void (*callback)(struct Node *, int))
+{
+    struct Node *current = list->first;
+
+    if (current == NULL)
+    {
+        return;
+    }
+
+    int index = 0;
+    while (current->next != NULL)
+    {
+        (*callback)(current, index);
+        current = current->next;
+        index++;
+    }
+}
+
+void test_func(struct Node *node, int index)
+{
+    printf("EXECUTING");
 }
